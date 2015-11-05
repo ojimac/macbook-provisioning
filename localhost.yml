@@ -86,7 +86,6 @@
       - { name: mindnode-pro }
       - { name: p4merge }
       - { name: pg-commander }
-      - { name: postgres }
       - { name: seil }
       - { name: sequel-pro }
       - { name: sketch }
