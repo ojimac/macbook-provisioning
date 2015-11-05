@@ -1,0 +1,155 @@
+- hosts: localhost
+  connection: local
+  gather_facts: no           
+  sudo: no
+  vars:
+    homebrew_taps:
+      - homebrew/binary
+      - homebrew/dupes
+      - caskroom/cask
+    homebrew_packages:
+      - { name: ansible }
+      - { name: autoconf }
+      - { name: autojump }
+      - { name: automake }
+      - { name: cmake }
+      - { name: coreutils }
+      - { name: ctags }
+      - { name: curl }
+      - { name: direnv }
+      - { name: flow }
+      - { name: gibo }
+      - { name: git }
+      - { name: go }
+      - { name: graphviz }
+      - { name: hub }
+      - { name: imagemagick }
+      - { name: jq }
+      - { name: lha }
+      - { name: lv }
+      - { name: mysql }
+      - { name: nkf }
+      - { name: openssl }
+      - { name: openssl, state: linked, install_options: force }
+      - { name: peco }
+      - { name: pkg-config }
+      - { name: python }
+      - { name: rbenv }
+      - { name: readline }
+      - { name: reattach-to-user-namespace }
+      - { name: redis }
+      - { name: rlwrap }
+      - { name: ruby-build }
+      - { name: socat }
+      - { name: source-highlight }
+      - { name: sqlite }
+      - { name: tig }
+      - { name: tmux }
+      - { name: tofrodos }
+      - { name: tree }
+      - { name: w3m }
+      - { name: wget }
+      - { name: xz }
+      - { name: zsh, install_options: disable-etcdir }
+    homebrew_cask_packages:
+      - { name: 1password }
+      - { name: adobe-reader }
+      - { name: alfred }
+      - { name: alternote }
+      - { name: android-file-transfer }
+      - { name: android-studio }
+      - { name: appcleaner }
+      - { name: atom }
+      - { name: base }
+      - { name: coteditor }
+      - { name: dash }
+      - { name: dash }
+      - { name: dropbox }
+      - { name: duet }
+      - { name: evernote }
+      - { name: firefox }
+      - { name: fluid }
+      - { name: flux }
+      - { name: flycut }
+      - { name: genymotion }
+      - { name: google-chrome }
+      - { name: imageoptim }
+      - { name: iterm2 }
+      - { name: java }
+      - { name: karabiner }
+      - { name: kindle }
+      - { name: kobito }
+      - { name: leech }
+      - { name: licecap }
+      - { name: macvim }
+      - { name: menumeters }
+      - { name: mindnode-pro }
+      - { name: p4merge }
+      - { name: pg-commander }
+      - { name: postgres }
+      - { name: seil }
+      - { name: sequel-pro }
+      - { name: sketch }
+      - { name: skitch }
+      - { name: skype }
+      - { name: slack }
+      - { name: sourcetree }
+      - { name: spotify }
+      - { name: sublime-text }
+      - { name: teamviewer }
+      - { name: textexpander }
+      - { name: the-unarchiver }
+      - { name: tower }
+      - { name: virtualbox }
+      - { name: vlc }
+      - { name: xampp }
+      - { name: xscope }
+
+  tasks:
+    - name: homebrew の tap リポジトリを追加
+      homebrew_tap: tap={{ item }} state=present
+      with_items: homebrew_taps
+
+    - name: homebrew をアップデート
+      homebrew: update_homebrew=yes
+
+    # brew
+    - name: brew パッケージをインストール
+      homebrew: >
+        name={{ item.name }}
+        state={{ item.state | default('latest') }}
+        install_options={{
+          item.install_options | default() | join(',')
+          if item.install_options is not string
+          else item.install_options
+        }}
+      with_items: homebrew_packages
+      register: brew_result
+    - name: brew パッケージの情報保存先ディレクトリを作成
+      file: path=brew_info state=directory
+    - name: brew パッケージの情報を保存
+      shell: brew info {{ item }} > brew_info/{{ item }}
+      with_items: brew_result.results | selectattr('changed') | map(attribute='item') | map(attribute='name') | list
+
+    # cask
+    - name: homebrew-cask のインストール
+      homebrew: name=brew-cask state=latest
+    - name: cask パッケージをインストール
+      homebrew_cask: name={{ item.name }} state={{ item.state|default('installed') }}
+      with_items: homebrew_cask_packages
+      register: cask_result
+    - name: cask パッケージの情報保存先ディレクトリを作成
+      file: path=cask_info state=directory
+    - name: cask パッケージの情報を保存
+      shell: brew cask info {{ item }} > cask_info/{{ item }}
+      with_items: cask_result.results | selectattr('changed') | map(attribute='item') | map(attribute='name') | list
+
+    # oh-my-zsh
+    - name: oh-my-zsh のインストール
+      shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+      args:
+        creates: ~/.oh-my-zsh/
+
+  handlers:
+    - name: run fc-cache
+      shell: fc-cache -vf
