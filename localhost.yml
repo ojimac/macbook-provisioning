@@ -67,7 +67,6 @@
       - { name: dash }
       - { name: dash }
       - { name: dropbox }
-      - { name: duet }
       - { name: evernote }
       - { name: firefox }
       - { name: fluid }
