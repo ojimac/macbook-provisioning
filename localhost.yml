@@ -84,7 +84,6 @@
       - { name: leech }
       - { name: licecap }
       - { name: macvim }
-      - { name: menumeters }
       - { name: mindnode-pro }
       - { name: p4merge }
       - { name: pg-commander }
