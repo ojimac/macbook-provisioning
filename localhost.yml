@@ -94,7 +94,6 @@
       - { name: slack }
       - { name: sourcetree }
       - { name: spotify }
-      - { name: sublime-text }
       - { name: teamviewer }
       - { name: textexpander }
       - { name: the-unarchiver }
