@@ -87,6 +87,7 @@
       - { name: mindnode-pro }
       - { name: p4merge }
       - { name: pg-commander }
+      - { name: rubymine }
       - { name: seil }
       - { name: sequel-pro }
       - { name: sketch }
@@ -101,6 +102,7 @@
       - { name: tower }
       - { name: virtualbox }
       - { name: vlc }
+      - { name: webstorm }
       - { name: xampp }
       - { name: xscope }
 
