@@ -9,6 +9,7 @@
       - caskroom/cask
     homebrew_packages:
       - { name: ack }
+      - { name: ag }
       - { name: ansible }
       - { name: autoconf }
       - { name: autojump }
