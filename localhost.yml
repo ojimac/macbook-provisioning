@@ -75,6 +75,7 @@
       - { name: flycut }
       - { name: genymotion }
       - { name: google-chrome }
+      - { name: google-japanese-ime }
       - { name: imageoptim }
       - { name: iterm2 }
       - { name: java }
@@ -87,6 +88,7 @@
       - { name: mindnode-pro }
       - { name: p4merge }
       - { name: pg-commander }
+      - { name: postico }
       - { name: rubymine }
       - { name: seil }
       - { name: sequel-pro }
@@ -101,6 +103,7 @@
       - { name: the-unarchiver }
       - { name: tower }
       - { name: virtualbox }
+      - { name: visual-studio-code }
       - { name: vlc }
       - { name: webstorm }
       - { name: xampp }
