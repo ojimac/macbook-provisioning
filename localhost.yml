@@ -87,6 +87,7 @@
       - { name: mindnode-pro }
       - { name: p4merge }
       - { name: pg-commander }
+      - { name: pomodone }
       - { name: postico }
       - { name: rubymine }
       - { name: seil }
