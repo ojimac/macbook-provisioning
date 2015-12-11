@@ -88,6 +88,7 @@
       - { name: p4merge }
       - { name: pg-commander }
       - { name: postico }
+      - { name: psequel }
       - { name: rubymine }
       - { name: seil }
       - { name: sequel-pro }
