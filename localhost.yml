@@ -73,6 +73,7 @@
       - { name: flux }
       - { name: flycut }
       - { name: genymotion }
+      - { name: gitify }
       - { name: google-chrome }
       - { name: google-japanese-ime }
       - { name: imageoptim }
