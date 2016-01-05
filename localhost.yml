@@ -81,7 +81,6 @@
       - { name: java }
       - { name: karabiner }
       - { name: kindle }
-      - { name: kobito }
       - { name: leech }
       - { name: licecap }
       - { name: macvim }
