@@ -67,6 +67,7 @@
       - { name: coteditor }
       - { name: dash }
       - { name: dropbox }
+      - { name: eclipse-ide }
       - { name: evernote }
       - { name: firefox }
       - { name: fluid }
