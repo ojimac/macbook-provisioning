@@ -61,6 +61,7 @@
       - { name: alfred }
       - { name: alternote }
       - { name: android-file-transfer }
+      - { name: android-sdk }
       - { name: android-studio }
       - { name: appcleaner }
       - { name: atom }
