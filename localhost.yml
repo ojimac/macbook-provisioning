@@ -35,6 +35,7 @@
       - { name: openssl, state: linked, install_options: force }
       - { name: peco }
       - { name: pkg-config }
+      - { name: postgis }
       - { name: postgresql }
       - { name: python }
       - { name: rbenv }
