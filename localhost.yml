@@ -110,7 +110,6 @@
       - { name: visual-studio-code }
       - { name: vlc }
       - { name: webstorm }
-      - { name: xampp }
       - { name: xscope }
 
   tasks:
