@@ -89,7 +89,6 @@
       - { name: macvim }
       - { name: mindnode-pro }
       - { name: p4merge }
-      - { name: pg-commander }
       - { name: phpstorm }
       - { name: postico }
       - { name: psequel }
